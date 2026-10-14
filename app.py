@@ -59,6 +59,15 @@ def main():
 
         score = calculate_score(nutrition)
 
+        if not score["top_three"]:
+            st.warning("No nutritional info detected.")
+
+            with st.expander("Detected OCR Text (Technical Information)"):
+                for result in results:
+                    st.write(result[1])
+
+            return
+
         # Nutrition Score
 
         st.divider()
